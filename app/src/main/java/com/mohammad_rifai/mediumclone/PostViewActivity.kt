@@ -2,6 +2,7 @@ package com.mohammad_rifai.mediumclone
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Environment
 import android.text.Html
 import android.util.Log
 import android.view.animation.AnimationUtils
@@ -12,21 +13,26 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigator
+import app_networking.Activation
 import app_networking.Connector
 import com.squareup.picasso.Picasso
 import org.json.JSONObject
+import java.io.File
 
 class PostViewActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        var path= Environment.getExternalStorageDirectory().toString()+"/Android/data/${packageName}"
+        File(path).mkdir()
         setContentView(R.layout.activity_post_view)
         setSupportActionBar(findViewById(R.id.toolbar))
         val anim_fap= AnimationUtils.loadAnimation(this,R.anim.anim_fap)
         findViewById<FloatingActionButton>(R.id.add_fovorite).startAnimation(anim_fap)
         findViewById<FloatingActionButton>(R.id.add_clap).startAnimation(anim_fap)
         findViewById<FloatingActionButton>(R.id.add_comment).startAnimation(anim_fap)
-        var CONNECTOR=Connector(this)
+        var CONNECTOR=Connector(this,packageName)
         var DATA_ID= intent.extras?.get("id") as String
         val anim=AnimationUtils.loadAnimation(this,R.anim.fade_in)
         findViewById<CollapsingToolbarLayout>(R.id.toolbar_layout).title = intent.extras?.get("title").toString()
@@ -36,6 +42,7 @@ class PostViewActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
         findViewById<FloatingActionButton>(R.id.add_comment).setOnClickListener { view ->
+
            var intent=Intent(this,CommentViewActivity::class.java)
             startActivity(intent)
         }

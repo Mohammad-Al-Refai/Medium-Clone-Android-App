@@ -12,7 +12,7 @@ import android.widget.TextView
 import app_networking.Connector
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.post.view.*
-var API="http://192.168.8.105:3000/"
+var API="http://192.168.8.103:3000/"
 class PostAdapter :BaseAdapter{
     var context:Context?=null
     var Data= arrayListOf<Array<String>>()

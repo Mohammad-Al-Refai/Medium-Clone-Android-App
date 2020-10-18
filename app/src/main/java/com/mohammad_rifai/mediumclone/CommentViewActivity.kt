@@ -1,11 +1,17 @@
 package com.mohammad_rifai.mediumclone
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.animation.AnimationUtils
+import android.widget.LinearLayout
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
+import app_networking.Activation
 import kotlinx.android.synthetic.main.content_comment_view.*
 
 
@@ -15,10 +21,23 @@ class CommentViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_comment_view)
         setSupportActionBar(findViewById(R.id.toolbar))
+        var active=Activation(this,packageName)
         setTitle("Comments")
+        var Anim=AnimationUtils.loadAnimation(this,R.anim.fade_in)
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-            var intent=Intent(this,Register::class.java)
-            startActivity(intent)
+          active.IsLogging {
+              var result=it as Array<Any>
+              if(result[0] as Boolean){
+                var alert=Dialog(this,android.R.style.Theme_DeviceDefault_Light_NoActionBar)
+                  alert.setContentView(R.layout.comment_dialog)
+                  alert.show()
+                  alert.findViewById<LinearLayout>(R.id.layout).startAnimation(Anim)
+              }else{
+                  Toast.makeText(this,"you must have account to comment!",Toast.LENGTH_LONG).show()
+                  var intent=Intent(this,Register::class.java)
+                  startActivity(intent)
+              }
+          }
         }
         var data= arrayListOf<Array<String>>()
         data.add(arrayOf("3",

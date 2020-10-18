@@ -50,10 +50,10 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             ///// coding here for on start avrivity
             //id,title,details,from,image,seen,date
-            var CONNECTOR=Connector(root.context)
+            var CONNECTOR=Connector(root.context,"")
             var data= arrayListOf<Array<String>>()
             CONNECTOR.get_data {
-                Log.i("CCCCCCCC",it.toString())
+
                 var items=JSONArray(it.toString())
                 for (i in 0..items.length()-1){
 
@@ -101,7 +101,7 @@ class HomeFragment : Fragment() {
                             && currentScrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE
                         ) {
 
-                          progress.show()
+//                          progress.show()
                         }else{
                          progress.dismiss()
                         }

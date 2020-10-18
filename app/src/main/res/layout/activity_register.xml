@@ -43,7 +43,7 @@
                 app:srcCompat="@drawable/ic_baseline_account_circle_24" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/register_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -67,7 +67,7 @@
                 app:srcCompat="@drawable/ic_baseline_alternate_email_24" />
 
             <EditText
-                android:id="@+id/editTextTextEmailAddress"
+                android:id="@+id/register_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -90,7 +90,7 @@
                 app:srcCompat="@drawable/ic_baseline_lock_24" />
 
             <EditText
-                android:id="@+id/editTextTextPassword"
+                android:id="@+id/register_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -113,7 +113,7 @@
                 app:srcCompat="@drawable/ic_baseline_lock_24" />
 
             <EditText
-                android:id="@+id/editTextTextPassword2"
+                android:id="@+id/register_confirm_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -137,7 +137,7 @@
                 android:padding="10pt">
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/btn_register"
                     android:layout_width="100pt"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_background_register"
@@ -162,7 +162,7 @@
                     android:textColor="@color/colorAccent" />
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/btn_login"
                     android:layout_width="70pt"
                     android:layout_height="wrap_content"
                     android:layout_margin="5pt"
